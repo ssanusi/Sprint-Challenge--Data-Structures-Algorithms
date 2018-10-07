@@ -5,8 +5,16 @@ class BinarySearchTree:
     self.right = None
 
   def depth_first_for_each(self, cb):
-    pass    
-
+    # call cb on the root node
+    cb(self.value)
+    # check if root node node exist
+    if self.left:
+      # call dfs on the left node
+      self.left.depth_first_for_each(cb)
+      #check if the node have right node
+    if self.right:
+      #call dfs on the right node
+      self.right.depth_first_for_each(cb)
   def breadth_first_for_each(self, cb):
     pass
 
