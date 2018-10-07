@@ -16,7 +16,26 @@ class BinarySearchTree:
       #call dfs on the right node
       self.right.depth_first_for_each(cb)
   def breadth_first_for_each(self, cb):
-    pass
+    #initiate a queue
+    queue = []
+    #append our root node to the queue
+    queue.append(self)
+    #loop through our queue and it not empty
+    while len(queue):
+      # current_node is the first in the list
+      current_node = queue.pop(0)
+      # check if current_node has a left node
+      if current_node.left:
+        # append it to the end of the Queue
+        queue.append(current_node.left)
+      # if current_node has a right node
+      if current_node.right:
+        # append it to the end of the Queue
+        queue.append(current_node.right)
+        # call cb on the current_node 
+      cb(current_node.value)
+
+
 
   def insert(self, value):
     new_tree = BinarySearchTree(value)
